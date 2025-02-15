@@ -189,7 +189,7 @@ fn main() {
             exit(EXIT_UNABLE_TO_CALCULATE);
         })
         .unwrap();
-    println!("Приближённое значение интеграла: {:.}", result);
+    println!("Приближённое значение интеграла: {}", result);
     let result_for_inaccuracy = calculate_integral_async(
         function,
         lower_bound,
@@ -201,13 +201,13 @@ fn main() {
             exit(EXIT_UNABLE_TO_CALCULATE);
         })
         .unwrap();
-    println!("\"Действительное\" значение интеграла: {:.}", result_for_inaccuracy);
+    println!("\"Действительное\" значение интеграла: {}", result_for_inaccuracy);
     let absolute_inaccuracy = (result_for_inaccuracy - result).abs();
     let relative_incaccuracy = absolute_inaccuracy / result;
     let step = (upper_bound - lower_bound) / samples as f64;
-    println!("Абсолютная погрешность: {:.}", absolute_inaccuracy);
+    println!("Абсолютная погрешность: {}", absolute_inaccuracy);
     let remaining_term_max = get_remaining_term(second_derivative, lower_bound, upper_bound, step);
-    println!("Верхняя граница для Rn: {:.}", remaining_term_max);
-    println!("Абсолютная погрешность соответствует остаточному члену: {:.}", absolute_inaccuracy <= remaining_term_max);
-    println!("Относительная погрешность: {:.}%", relative_incaccuracy * 100.0);
+    println!("Верхняя граница для Rn: {}", remaining_term_max);
+    println!("Абсолютная погрешность соответствует остаточному члену: {}", absolute_inaccuracy <= remaining_term_max);
+    println!("Относительная погрешность: {}%", relative_incaccuracy * 100.0);
 }
